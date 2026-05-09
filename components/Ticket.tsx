@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { Star, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Ticket() {
   const [mounted, setMounted] = useState(false);
@@ -28,13 +29,13 @@ export default function Ticket() {
       {/* Premium Gradient Header */}
       <div className="relative bg-gradient-to-br from-[#d62828] via-[#ae2012] to-[#9b2226] text-white p-8">
         <div className="relative z-10">
-          <h2 className="text-3xl font-black tracking-tighter uppercase italic leading-none">ARKEN</h2>
+          <h2 className="text-3xl font-black tracking-tighter uppercase italic leading-none text-white">ARKEN</h2>
           <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-80 mt-1">Museum for Moderne Kunst</p>
         </div>
 
         <div className="mt-6">
-          <p className="text-[10px] uppercase font-black opacity-60 tracking-widest">Gæst</p>
-          <p className="text-xl font-mono font-bold tracking-tighter uppercase leading-tight">Verdens Bedste Mor</p>
+          <p className="text-[10px] uppercase font-black opacity-60 tracking-widest text-white">Gæst</p>
+          <p className="text-xl font-mono font-bold tracking-tighter uppercase leading-tight text-white">Verdens Bedste Mor</p>
         </div>
       </div>
 
@@ -85,6 +86,17 @@ export default function Ticket() {
             </div>
             <p className="text-[8px] font-mono font-bold tracking-[0.8em] text-gray-300 pl-[0.8em] uppercase">Arken X World Best Mom</p>
           </div>
+        </div>
+
+        {/* Integrated Navigation Button */}
+        <div className="pt-2">
+          <Link 
+            href="/exhibitions" 
+            className="flex items-center justify-between w-full bg-accent hover:bg-accent-dark text-white px-6 py-4 rounded-2xl shadow-md transition-all active:scale-[0.98] group cursor-pointer"
+          >
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-white">Se udstillinger</span>
+            <ChevronRight size={18} className="text-white group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
 

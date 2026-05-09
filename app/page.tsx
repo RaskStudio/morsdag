@@ -83,25 +83,11 @@ export default function Home() {
                 Fordi du er verdens bedste, skal vi sammen på ARKEN.
               </p>
               <div className="flex justify-center gap-4 text-accent">
-                <Heart className="fill-current" size={20} />
-                <Sparkles size={20} />
+                <Heart className="fill-current" size={24} />
+                <Sparkles size={24} />
               </div>
-
-              <div className="pt-1 relative z-50">
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link 
-                    href="/exhibitions" 
-                    className="inline-block px-8 py-3 bg-accent text-white rounded-full text-base font-black shadow-lg transition-all uppercase tracking-wider font-sans cursor-pointer pointer-events-auto"
-                  >
-                    Se udstillinger
-                  </Link>
-                </motion.div>
               </div>
-            </div>
-          </motion.div>
+              </motion.div>
 
           {/* THE GIFT BOX (WRAPPING) */}
           <motion.div 
