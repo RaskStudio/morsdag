@@ -114,10 +114,11 @@ export default function Home() {
                   </div>
                 </motion.div>
                 
-                {/* Text moved to bottom */}
+                {/* Text at the absolute bottom */}
                 <div className="absolute bottom-6 left-0 w-full text-center z-50 text-white px-4">
-                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-0.5 drop-shadow-md font-sans opacity-90">Til Verdens Bedste</p>
-                  <p className="text-4xl sm:text-5xl font-serif italic font-black drop-shadow-xl">Mor</p>
+                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans opacity-80">Til Verdens Bedste</p>
+                  <p className="text-5xl font-serif italic font-black drop-shadow-2xl">Mor</p>
+                </div>
                 </div>
               </motion.div>
 
