@@ -112,12 +112,12 @@ export default function Home() {
               {/* Box Lid */}
               <motion.div 
                 style={{ y: lidY, rotate: lidRotate }}
-                className="absolute inset-0 z-30 bg-accent rounded-2xl shadow-2xl paper-texture border-b-8 border-black/20 origin-bottom-left flex flex-col items-center justify-center text-center p-6"
+                className="absolute inset-0 z-30 bg-accent rounded-2xl shadow-2xl paper-texture border-b-8 border-black/20 origin-bottom-left"
               >
                 {/* Bow */}
                 <motion.div 
                   style={{ scale: bowScale, rotate: bowRotate, opacity: bowOpacity }}
-                  className="absolute inset-0 flex items-center justify-center"
+                  className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 >
                   <div className="absolute h-full w-12 bg-white/20 shadow-inner" />
                   <div className="absolute w-full h-12 bg-white/20 shadow-inner" />
@@ -128,9 +128,10 @@ export default function Home() {
                   </div>
                 </motion.div>
                 
-                <div className="relative z-10 mt-12 text-white">
-                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans">Til Verdens Bedste</p>
-                  <p className="text-5xl font-serif italic font-black drop-shadow-lg">Mor</p>
+                {/* Text moved to bottom */}
+                <div className="absolute bottom-6 left-0 w-full text-center z-50 text-white px-4">
+                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-0.5 drop-shadow-md font-sans opacity-90">Til Verdens Bedste</p>
+                  <p className="text-4xl sm:text-5xl font-serif italic font-black drop-shadow-xl">Mor</p>
                 </div>
               </motion.div>
 
