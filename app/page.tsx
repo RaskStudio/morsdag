@@ -119,7 +119,6 @@ export default function Home() {
                   <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans opacity-80">Til Verdens Bedste</p>
                   <p className="text-5xl font-serif italic font-black drop-shadow-2xl">Mor</p>
                 </div>
-                </div>
               </motion.div>
 
               {/* Box Sides */}
