@@ -98,9 +98,9 @@ export default function Home() {
               {/* Box Lid */}
               <motion.div 
                 style={{ y: lidY, rotate: lidRotate }}
-                className="absolute inset-0 z-30 bg-accent rounded-2xl shadow-2xl paper-texture border-b-8 border-black/20 origin-bottom-left"
+                className="absolute inset-0 z-30 bg-accent rounded-2xl shadow-2xl paper-texture border-b-8 border-black/20 origin-bottom-left flex flex-col items-center justify-center text-center p-6"
               >
-                {/* Bow */}
+                {/* Bow Container (Centered in the lid) */}
                 <motion.div 
                   style={{ scale: bowScale, rotate: bowRotate, opacity: bowOpacity }}
                   className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -108,16 +108,16 @@ export default function Home() {
                   <div className="absolute h-full w-12 bg-white/20 shadow-inner" />
                   <div className="absolute w-full h-12 bg-white/20 shadow-inner" />
                   <div className="relative z-40 flex">
-                    <div className="w-16 h-16 bg-[#f77f00] rounded-full -mr-4 border-2 border-black/10 shadow-xl" />
-                    <div className="w-16 h-16 bg-[#f77f00] rounded-full -ml-4 border-2 border-black/10 shadow-xl" />
+                    <div className="w-14 h-14 bg-[#f77f00] rounded-full -mr-3 border-2 border-black/10 shadow-xl" />
+                    <div className="w-14 h-14 bg-[#f77f00] rounded-full -ml-3 border-2 border-black/10 shadow-xl" />
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#f77f00] rounded-lg shadow-lg border-2 border-black/10" />
                   </div>
                 </motion.div>
                 
-                {/* Text at the absolute bottom */}
-                <div className="absolute bottom-6 left-0 w-full text-center z-50 text-white px-4">
-                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans opacity-80">Til Verdens Bedste</p>
-                  <p className="text-5xl font-serif italic font-black drop-shadow-2xl">Mor</p>
+                {/* Text (Pushed down slightly to clear the bow's visual center) */}
+                <div className="relative z-10 mt-20 sm:mt-24 text-white drop-shadow-lg">
+                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 opacity-80 font-sans">Til Verdens Bedste</p>
+                  <p className="text-4xl sm:text-5xl font-serif italic font-black">Mor</p>
                 </div>
               </motion.div>
 
