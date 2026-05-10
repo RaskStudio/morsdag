@@ -92,24 +92,24 @@ export default function Home() {
                 style={{ y: lidY, rotate: lidRotate }}
                 className="absolute inset-0 z-30 bg-accent rounded-lg shadow-2xl paper-texture border-b-4 border-black/20 origin-bottom-left"
               >
-                {/* Bow - Z-10 internally */}
+                {/* Bow - Forced to the background of the lid */}
                 <motion.div 
                   style={{ scale: bowScale, rotate: bowRotate, opacity: bowOpacity }}
-                  className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+                  className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
                 >
                   <div className="absolute h-full w-12 bg-white/20 shadow-inner" />
                   <div className="absolute w-full h-12 bg-white/20 shadow-inner" />
-                  <div className="relative z-40 flex">
+                  <div className="relative z-0 flex">
                     <div className="w-16 h-16 bg-[#f77f00] rounded-full -mr-4 border-2 border-black/10 shadow-xl" />
                     <div className="w-16 h-16 bg-[#f77f00] rounded-full -ml-4 border-2 border-black/10 shadow-xl" />
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#f77f00] rounded-lg shadow-lg border-2 border-black/10" />
                   </div>
                 </motion.div>
                 
-                {/* Text - Z-50 internally and back to bottom-left */}
-                <div className="absolute bottom-6 left-6 z-50 text-white drop-shadow-md">
-                  <p className="text-[10px] uppercase tracking-[0.4em] font-black opacity-80 font-sans">Til Verdens Bedste</p>
-                  <p className="text-4xl font-serif italic font-black">Mor</p>
+                {/* Text - Forced to the foreground of the lid (Z-100) */}
+                <div className="absolute bottom-6 left-6 z-[100] text-white pointer-events-none drop-shadow-lg">
+                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans opacity-90">Til Verdens Bedste</p>
+                  <p className="text-5xl font-serif italic font-black drop-shadow-2xl">Mor</p>
                 </div>
               </motion.div>
 
