@@ -124,21 +124,6 @@ export default function Home() {
               </div>
             </div>
           </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div 
-            style={{ opacity: indicatorOpacity }}
-            className="absolute bottom-12 flex flex-col items-center gap-2 pointer-events-none z-[60]"
-          >
-            <motion.div 
-              animate={{ y: [0, 10, 0] }} 
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="flex flex-col items-center gap-1"
-            >
-              <span className="text-accent text-[10px] uppercase tracking-[0.3em] font-black font-sans">Scroll for at pakke ud</span>
-              <ArrowDown className="text-accent" size={32} />
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 
