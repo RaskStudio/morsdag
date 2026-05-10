@@ -16,6 +16,7 @@ export default function Home() {
     // Check if we should start in revealed state
     const params = new URLSearchParams(window.location.search);
     if (params.get('revealed') === 'true') {
+      // Small timeout to ensure the height is rendered before scrolling
       setTimeout(() => {
         window.scrollTo({
           top: document.body.scrollHeight,
@@ -39,7 +40,8 @@ export default function Home() {
   const boxOpacity = useTransform(scrollYProgress, [0.8, 0.95], [1, 0]);
   const contentOpacity = useTransform(scrollYProgress, [0.7, 0.95, 1], [0, 1, 1]);
   const contentScale = useTransform(scrollYProgress, [0.7, 0.95], [0.85, 1]);
-  const contentY = useTransform(scrollYProgress, [0.7, 0.95], [0, 20]);
+  // LIFTED: contentY is now negative to move the card UP instead of down
+  const contentY = useTransform(scrollYProgress, [0.7, 0.95], [0, -30]);
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.01], [1, 0]);
   
   // New: Animate pointer events to prevent early clicks on desktop
@@ -123,6 +125,21 @@ export default function Home() {
                 <motion.div style={{ y: bottomSideY }} className="absolute inset-0 bg-accent rounded-lg paper-texture shadow-2xl -z-10" />
               </div>
             </div>
+          </motion.div>
+
+          {/* Scroll Indicator - RESTORED */}
+          <motion.div 
+            style={{ opacity: indicatorOpacity }}
+            className="absolute bottom-12 flex flex-col items-center gap-2 pointer-events-none z-[60]"
+          >
+            <motion.div 
+              animate={{ y: [0, 10, 0] }} 
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-1"
+            >
+              <span className="text-accent text-[10px] uppercase tracking-[0.3em] font-black font-sans">Scroll for at pakke ud</span>
+              <ArrowDown className="text-accent" size={32} />
+            </motion.div>
           </motion.div>
         </div>
       </div>
