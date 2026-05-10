@@ -86,13 +86,13 @@ export default function Home() {
             style={{ opacity: boxOpacity }}
             className="absolute inset-0 z-50 pointer-events-none flex items-center justify-center"
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80">
               {/* Box Lid */}
               <motion.div 
                 style={{ y: lidY, rotate: lidRotate }}
-                className="absolute inset-0 z-30 bg-accent rounded-2xl shadow-2xl paper-texture border-b-8 border-black/20 origin-bottom-left"
+                className="absolute inset-0 z-30 bg-accent rounded-lg shadow-2xl paper-texture border-b-4 border-black/20 origin-bottom-left"
               >
-                {/* Bow - Lower internal Z */}
+                {/* Bow - Z-10 internally */}
                 <motion.div 
                   style={{ scale: bowScale, rotate: bowRotate, opacity: bowOpacity }}
                   className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
@@ -106,18 +106,18 @@ export default function Home() {
                   </div>
                 </motion.div>
                 
-                {/* Text - Higher internal Z and moved to bottom */}
-                <div className="absolute bottom-8 left-0 w-full text-center z-50 text-white px-4">
-                  <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans opacity-80">Til Verdens Bedste</p>
-                  <p className="text-5xl font-serif italic font-black drop-shadow-2xl">Mor</p>
+                {/* Text - Z-50 internally and back to bottom-left */}
+                <div className="absolute bottom-6 left-6 z-50 text-white drop-shadow-md">
+                  <p className="text-[10px] uppercase tracking-[0.4em] font-black opacity-80 font-sans">Til Verdens Bedste</p>
+                  <p className="text-4xl font-serif italic font-black">Mor</p>
                 </div>
               </motion.div>
 
               {/* Box Sides */}
               <div className="absolute inset-0 z-20 flex flex-wrap">
-                <motion.div style={{ x: leftSideX }} className="w-1/2 h-full bg-[#ae2012] rounded-l-2xl paper-texture shadow-xl border-r-4 border-black/10" />
-                <motion.div style={{ x: rightSideX }} className="w-1/2 h-full bg-[#9b2226] rounded-r-2xl paper-texture shadow-xl" />
-                <motion.div style={{ y: bottomSideY }} className="absolute inset-0 bg-accent rounded-2xl paper-texture shadow-2xl -z-10" />
+                <motion.div style={{ x: leftSideX }} className="w-1/2 h-full bg-[#ae2012] rounded-l-lg paper-texture shadow-xl border-r-2 border-black/10" />
+                <motion.div style={{ x: rightSideX }} className="w-1/2 h-full bg-[#9b2226] rounded-r-lg paper-texture shadow-xl" />
+                <motion.div style={{ y: bottomSideY }} className="absolute inset-0 bg-accent rounded-lg paper-texture shadow-2xl -z-10" />
               </div>
             </div>
           </motion.div>
