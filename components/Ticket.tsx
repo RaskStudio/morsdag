@@ -21,8 +21,6 @@ export default function Ticket() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9, rotate: -2, y: 20 }}
-      whileInView={{ opacity: 1, scale: 1, rotate: 1, y: 0 }}
       whileHover={{ rotate: 0, scale: 1.02, transition: { duration: 0.2 } }}
       className="relative w-full max-w-[360px] mx-auto bg-white rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden paper-texture border border-white/50"
     >

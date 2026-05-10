@@ -16,7 +16,6 @@ export default function Home() {
     // Check if we should start in revealed state
     const params = new URLSearchParams(window.location.search);
     if (params.get('revealed') === 'true') {
-      // Small timeout to ensure the height is rendered before scrolling
       setTimeout(() => {
         window.scrollTo({
           top: document.body.scrollHeight,
@@ -24,35 +23,27 @@ export default function Home() {
         });
       }, 50);
     } else {
-      // Force scroll to top on fresh load
       window.scrollTo(0, 0);
     }
   }, []);
 
-  // ALL HOOKS MUST BE AT THE TOP LEVEL
-  
-  // 1. Bow Untying (0% - 20%)
+  // ALL HOOKS
   const bowScale = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const bowRotate = useTransform(scrollYProgress, [0, 0.2], [0, 90]);
   const bowOpacity = useTransform(scrollYProgress, [0.1, 0.2], [1, 0]);
-  
-  // 2. Lid Lifting (20% - 60%)
   const lidY = useTransform(scrollYProgress, [0.2, 0.6], ["0vh", "-100vh"]);
   const lidRotate = useTransform(scrollYProgress, [0.2, 0.6], [0, -15]);
-
-  // 3. Box Sides Opening (50% - 90%)
   const leftSideX = useTransform(scrollYProgress, [0.5, 0.9], ["0vw", "-100vw"]);
   const rightSideX = useTransform(scrollYProgress, [0.5, 0.9], ["0vw", "100vw"]);
   const bottomSideY = useTransform(scrollYProgress, [0.5, 0.9], ["0vh", "100vh"]);
   const boxOpacity = useTransform(scrollYProgress, [0.8, 0.95], [1, 0]);
-
-  // 4. Content Reveal (70% - 95%)
   const contentOpacity = useTransform(scrollYProgress, [0.7, 0.95, 1], [0, 1, 1]);
   const contentScale = useTransform(scrollYProgress, [0.7, 0.95], [0.85, 1]);
   const contentY = useTransform(scrollYProgress, [0.7, 0.95], [0, 20]);
-
-  // 5. Scroll Indicator - Fades out IMMEDIATELY (0% to 1%)
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.01], [1, 0]);
+  
+  // New: Animate pointer events to prevent early clicks on desktop
+  const contentPointerEvents = useTransform(scrollYProgress, [0, 0.8], ["none", "auto"]);
 
   if (!mounted) return null;
 
@@ -67,14 +58,15 @@ export default function Home() {
       <div className="h-[300vh]">
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden p-4">
           
-          {/* THE GIFT CONTENT (UNDERNEATH) */}
+          {/* THE GIFT CONTENT (UNDERNEATH) - Lower Z and animated pointer events */}
           <motion.div 
             style={{ 
               opacity: contentOpacity, 
               scale: contentScale,
-              y: contentY 
+              y: contentY,
+              pointerEvents: contentPointerEvents
             }}
-            className="absolute z-10 w-full max-w-sm flex flex-col items-center gap-4 pointer-events-auto"
+            className="absolute z-10 w-full max-w-sm flex flex-col items-center gap-4"
           >
             <Ticket />
             
@@ -89,24 +81,10 @@ export default function Home() {
                 <Heart className="fill-current" size={20} />
                 <Sparkles size={20} />
               </div>
-
-              <div className="pt-1 relative z-50">
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link 
-                    href="/exhibitions" 
-                    className="inline-block px-8 py-3 bg-accent text-white rounded-full text-base font-black shadow-lg transition-all uppercase tracking-wider font-sans cursor-pointer pointer-events-auto"
-                  >
-                    Se udstillinger
-                  </Link>
-                </motion.div>
-              </div>
             </div>
           </motion.div>
 
-          {/* THE GIFT BOX (WRAPPING) */}
+          {/* THE GIFT BOX (WRAPPING) - Higher Z to stay on top */}
           <motion.div 
             style={{ opacity: boxOpacity }}
             className="absolute inset-0 z-50 pointer-events-none flex items-center justify-center"
@@ -115,9 +93,9 @@ export default function Home() {
               {/* Box Lid */}
               <motion.div 
                 style={{ y: lidY, rotate: lidRotate }}
-                className="absolute inset-0 z-30 bg-accent rounded-2xl shadow-2xl paper-texture border-b-8 border-black/20 origin-bottom-left flex flex-col items-center justify-center text-center p-6"
+                className="absolute inset-0 z-30 bg-accent rounded-lg shadow-2xl paper-texture border-b-4 border-black/20 origin-bottom-left flex flex-col items-center justify-center text-center p-6"
               >
-                {/* Bow - Forced behind text */}
+                {/* Bow - Forced background within lid */}
                 <motion.div 
                   style={{ scale: bowScale, rotate: bowRotate, opacity: bowOpacity }}
                   className="absolute inset-0 flex items-center justify-center z-0"
@@ -131,7 +109,7 @@ export default function Home() {
                   </div>
                 </motion.div>
                 
-                {/* Text - Forced in front of bow */}
+                {/* Text - Forced foreground within lid */}
                 <div className="relative z-50 mt-12 text-white">
                   <p className="text-[10px] uppercase tracking-[0.4em] font-black mb-1 drop-shadow-md font-sans">Til Verdens Bedste</p>
                   <p className="text-5xl font-serif italic font-black drop-shadow-lg">Mor</p>
@@ -140,9 +118,9 @@ export default function Home() {
 
               {/* Box Sides */}
               <div className="absolute inset-0 z-20 flex flex-wrap">
-                <motion.div style={{ x: leftSideX }} className="w-1/2 h-full bg-[#ae2012] rounded-l-2xl paper-texture shadow-xl border-r-4 border-black/10" />
-                <motion.div style={{ x: rightSideX }} className="w-1/2 h-full bg-[#9b2226] rounded-r-2xl paper-texture shadow-xl" />
-                <motion.div style={{ y: bottomSideY }} className="absolute inset-0 bg-accent rounded-2xl paper-texture shadow-2xl -z-10" />
+                <motion.div style={{ x: leftSideX }} className="w-1/2 h-full bg-[#ae2012] rounded-l-lg paper-texture shadow-xl border-r-4 border-black/10" />
+                <motion.div style={{ x: rightSideX }} className="w-1/2 h-full bg-[#9b2226] rounded-r-lg paper-texture shadow-xl" />
+                <motion.div style={{ y: bottomSideY }} className="absolute inset-0 bg-accent rounded-lg paper-texture shadow-2xl -z-10" />
               </div>
             </div>
           </motion.div>
@@ -150,7 +128,7 @@ export default function Home() {
           {/* Scroll Indicator */}
           <motion.div 
             style={{ opacity: indicatorOpacity }}
-            className="absolute bottom-12 flex flex-col items-center gap-2 pointer-events-none z-[5]"
+            className="absolute bottom-12 flex flex-col items-center gap-2 pointer-events-none z-[60]"
           >
             <motion.div 
               animate={{ y: [0, 10, 0] }} 
