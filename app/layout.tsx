@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
-  title: "Glædelig Mors Dag | ARKEN Tur",
-  description: "En digital gave til verdens bedste mor.",
+  title: "Mors dags gave",
+  description: "Mors dags gave",
 };
 
 export default function RootLayout({
