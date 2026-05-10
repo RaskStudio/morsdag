@@ -97,7 +97,7 @@ export default function ExhibitionDetail() {
     <div className="min-h-screen bg-background text-foreground font-sans pb-20">
       <header className="p-6 flex items-center justify-between">
         <Link 
-          href="/?revealed=true" 
+          href="/exhibitions" 
           className="inline-flex items-center gap-2 text-accent font-black uppercase text-[10px] tracking-[0.3em] bg-white px-4 py-2 rounded-full shadow-sm border border-accent/10"
         >
           <ArrowLeft size={14} /> Oversigt
